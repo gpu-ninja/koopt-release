@@ -17,10 +17,10 @@ jobs:
     - name: Generate Release
       shell: bash
       run: |
-        PACKAGE_URL_DARWIN_AMD64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == "\darwin/amd64\") | .url" index.yaml)
-        PACKAGE_URL_DARWIN_ARM64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == "\darwin/arm64\") | .url" index.yaml)
-        PACKAGE_URL_LINUX_AMD64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == "\linux/amd64\") | .url" index.yaml)
-        PACKAGE_URL_LINUX_ARM64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == "\linux/arm64\") | .url" index.yaml)
+        PACKAGE_URL_DARWIN_AMD64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == \"darwin/amd64\") | .url" index.yaml)
+        PACKAGE_URL_DARWIN_ARM64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == \"darwin/arm64\") | .url" index.yaml)
+        PACKAGE_URL_LINUX_AMD64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == \"linux/amd64\") | .url" index.yaml)
+        PACKAGE_URL_LINUX_ARM64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == \"linux/arm64\") | .url" index.yaml)
         
         echo "# Koopt ${{ github.ref_name }}" > release.md
         echo '## Packages' >> release.md
