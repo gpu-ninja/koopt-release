@@ -3,4 +3,21 @@ kind: PackageIndex
 metadata:
   name: koopt
 spec:
-  packages: []
+  packages:
+    - name: koopt
+      tags:
+        - v0.1.0
+        - latest
+      platforms:
+        - name: darwin/amd64
+          url: https://download.koopt.sh/blobs/72KW8A6ph4xknEoSzKdrXetY1suoymkJsdbPfMVGyYdo/koopt-package-darwin-amd64.tar.zst
+          sha256: 1ea9737876764237d98979dbbfa3aab10dde4355739922091f6a8e8a9b228496
+        - name: darwin/arm64
+          url: https://download.koopt.sh/blobs/3NR5XZDxu75TWG4EnLS3RNyoZP4LxX4jeYWkeeqEXDmn/koopt-package-darwin-arm64.tar.zst
+          sha256: 685d5e03535807eb3f9b5906c0433674c2c38cc818e5412ce9ed85e29aec15d6
+        - name: linux/amd64
+          url: https://download.koopt.sh/blobs/43ytNrmTse44BrAvA74thNN1UPqkR7mriVn6DiY18JRw/koopt-package-linux-amd64.tar.zst
+          sha256: faec9056a7baa364dc008a57dd14778658fc2ad724dbfafd69d74a95fa968cd5
+        - name: linux/arm64
+          url: https://download.koopt.sh/blobs/9sF89PDV65QCdEwnhw8GcUd6Vc5E1sHHH1RnXAnAULuG/koopt-package-linux-arm64.tar.zst
+          sha256: 11d19c20b62ce93a68d9f13e120d518896781bf9b3ca6985a7e27c8307dd514c
