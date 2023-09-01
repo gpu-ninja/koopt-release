@@ -1,0 +1,6 @@
+apiVersion: koopt.gpu-ninja.com/v1alpha1
+kind: PackageIndex
+metadata:
+  name: koopt
+spec:
+  packages: []

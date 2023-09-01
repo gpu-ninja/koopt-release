@@ -1,0 +1,21 @@
+name: Release
+
+on:
+  push:
+    tags: [v*]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check Out Repo
+      uses: actions/checkout@v3
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          index.yaml
+          LICENSE
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
