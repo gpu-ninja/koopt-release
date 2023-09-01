@@ -8,12 +8,31 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+    - name: Install yq
+      uses: mikefarah/yq@v4.35.1
+
     - name: Check Out Repo
       uses: actions/checkout@v3
+
+    - name: Generate Release
+      shell: bash
+      run: |
+        PACKAGE_URL_DARWIN_AMD64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == "\darwin/amd64\") | .url" index.yaml)
+        PACKAGE_URL_DARWIN_ARM64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == "\darwin/arm64\") | .url" index.yaml)
+        PACKAGE_URL_LINUX_AMD64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == "\linux/amd64\") | .url" index.yaml)
+        PACKAGE_URL_LINUX_ARM64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == "\linux/arm64\") | .url" index.yaml)
+        
+        echo "# Koopt ${{ github.ref_name }}" > release.md
+        echo '## Packages' >> release.md
+        echo "* [koopt-package-darwin-amd64.tar.zst](${PACKAGE_URL_DARWIN_AMD64})" >> release.md
+        echo "* [koopt-package-darwin-arm64.tar.zst](${PACKAGE_URL_DARWIN_ARM64})" >> release.md
+        echo "* [koopt-package-linux-amd64.tar.zst](${PACKAGE_URL_LINUX_AMD64})" >> release.md
+        echo "* [koopt-package-linux-arm64.tar.zst](${PACKAGE_URL_LINUX_ARM64})" >> release.md
 
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
+        body_path: release.md
         files: |
           index.yaml
           LICENSE

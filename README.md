@@ -1,3 +1,3 @@
-# koopt-releases
+# koopt-release
 
-An index of Koopt packages.
+An index of Koopt package releases.
