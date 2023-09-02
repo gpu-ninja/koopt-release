@@ -1,0 +1,4 @@
+bb98156d11cbf0f764b9843964d186ce1b085f64f857e57575c024b590a1fc50  ./koopt-package-darwin-amd64.tar.zst
+d2f20e3685d68abc84d84ae474f6a5546eb475fcecd1614e7774b1317d2f1919  ./koopt-package-darwin-arm64.tar.zst
+2f3c8d049b4e1b506db15ca4dcf850d8f2a26fa1bc204a5d92273907109685d3  ./koopt-package-linux-amd64.tar.zst
+cba4a2b8be9d5922375dcf7ea3aeb3b171144ff99269e0c3d661a7d124b42dff  ./koopt-package-linux-arm64.tar.zst
