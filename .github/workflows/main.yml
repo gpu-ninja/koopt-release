@@ -18,19 +18,10 @@ jobs:
       shell: bash
       run: |
         PACKAGE_URL_DARWIN_AMD64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == \"darwin/amd64\") | .url" index.yaml)
-        SHA256_DARWIN_AMD64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == \"darwin/amd64\") | .sha256" index.yaml)
         PACKAGE_URL_DARWIN_ARM64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == \"darwin/arm64\") | .url" index.yaml)
-        SHA256_DARWIN_ARM64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == \"darwin/arm64\") | .sha256" index.yaml)
         PACKAGE_URL_LINUX_AMD64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == \"linux/amd64\") | .url" index.yaml)
-        SHA256_LINUX_AMD64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == \"linux/amd64\") | .sha256" index.yaml)
         PACKAGE_URL_LINUX_ARM64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == \"linux/arm64\") | .url" index.yaml)
-        SHA256_LINUX_ARM64=$(yq eval ".spec.packages[] | select(.name == \"koopt\") | select(.tags[] == \"${{ github.ref_name }}\") | .platforms[] | select(.name == \"linux/arm64\") | .sha256" index.yaml)
-
-        echo "${SHA256_DARWIN_AMD64}  ./koopt-package-darwin-amd64.tar.zst" > checksums.txt
-        echo "${SHA256_DARWIN_ARM64}  ./koopt-package-darwin-arm64.tar.zst" >> checksums.txt
-        echo "${SHA256_LINUX_AMD64}  ./koopt-package-linux-amd64.tar.zst" >> checksums.txt
-        echo "${SHA256_LINUX_ARM64}  ./koopt-package-linux-arm64.tar.zst" >> checksums.txt
-
+      
         echo "# Koopt ${{ github.ref_name }}" > release.md
         echo '## Packages' >> release.md
         echo "* [koopt-package-darwin-amd64.tar.zst](${PACKAGE_URL_DARWIN_AMD64})" >> release.md
@@ -44,7 +35,6 @@ jobs:
         body_path: release.md
         files: |
           index.yaml
-          checksums.txt
           LICENSE
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
