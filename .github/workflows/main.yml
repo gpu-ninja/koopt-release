@@ -35,6 +35,7 @@ jobs:
         body_path: release.md
         files: |
           index.yaml
+          checksums.txt
           LICENSE
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
