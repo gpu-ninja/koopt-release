@@ -6,8 +6,20 @@ spec:
   packages:
     - name: koopt
       tags:
-        - v0.3.1
+        - v0.3.2
         - latest
+      platforms:
+        - name: darwin/amd64
+          url: https://download.koopt.sh/blobs/2QiciWuq7fxBTJQ8piHM7JqVxckdJ8wgUeVfzmmrfrBq/koopt-package-darwin-amd64.tar.zst
+        - name: darwin/arm64
+          url: https://download.koopt.sh/blobs/2feJ7tvohLNmuZztdiaYuErMDTofxHpJcaGz8dLNQCs2/koopt-package-darwin-arm64.tar.zst
+        - name: linux/amd64
+          url: https://download.koopt.sh/blobs/8WdnKyKzpTbqp3odRyA7brtPJzj4w5dKwGy2xFb5GTA6/koopt-package-linux-amd64.tar.zst
+        - name: linux/arm64
+          url: https://download.koopt.sh/blobs/8r2P1a4YLs4gLLbJ9dL5WGiMvks3vUCVmxQgnwSxfrZS/koopt-package-linux-arm64.tar.zst
+    - name: koopt
+      tags:
+        - v0.3.1
       platforms:
         - name: darwin/amd64
           url: https://download.koopt.sh/blobs/CiipWb3qvB7PrardKrBzj7fgLgzXLLBVJWDE9Setsp62/koopt-package-darwin-amd64.tar.zst
